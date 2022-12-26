@@ -1,0 +1,56 @@
+#!/bin/bash
+
+alias -- -='cd - && pwd'
+alias ..='cd .. && pwd'
+alias ...='cd ../.. && pwd'
+alias ....='cd ../../.. && pwd'
+alias cd..='cd .. && pwd'
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias grep='grep --color=always'
+# alias grep='grep --color=auto' # not working in some pipes
+
+# ----------------------------------------------------------------------
+
+alias cp='cp -iv'
+#             │└─ list copied files
+#             └─ prompt before overwriting an existing file
+
+alias mkdir='mkdir -pv'
+#                   │└─ list created directories
+#                   └─ create intermediate directories
+
+alias mv='mv -iv'
+#             │└─ list moved files
+#             └─ prompt before overwriting an existing file
+
+# ----------------------------------------------------------------------
+
+alias n='nautilus .'
+alias d='dolphin .'
+alias ip='hostname -I'
+alias path='printf "%b\n" "${PATH//:/\\n}"'
+alias jpp='pidof java | sudo xargs pwdx'       # java process's path, jps++
+alias tls='tmux ls'
+# my default workspace
+#alias tt='tmux new-session -A -s default'     # sounds not stable
+alias tt='tmux ls 2> /dev/null | grep default > /dev/null 2>&1; [[ $? == 0 ]] && tmux attach -t default || tmux new -s default'
+# integrated and fast service status
+alias ss='sudo systemctl --full --type=service --all | grep -i \
+"kafka\
+\|zookeeper\
+\|elasticsearch\
+\|logstash\
+\|filebeat\
+\|grafana\
+\|kibana\
+\|prometheus\
+\|fluent-bit"'
+
+# ----------------------------------------------------------------------
+
+# Load OS specific aliases, if any
+[ -f $OS/bash_aliases ] && source $OS/bash_aliases
