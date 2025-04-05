@@ -11,7 +11,7 @@ source $ZSH/oh-my-zsh.sh
 # ----------------------------------------------------------------------
 
 [ -f ~/.aliases ] && source ~/.aliases
-[ -f ~/fzf/.fzf.zsh ] && source ~/fzf/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # https://github.com/Aloxaf/fzf-tab
 source ~/fzf-tab/fzf-tab.plugin.zsh
@@ -38,8 +38,10 @@ bindkey "^[3" comment-it  # alt-3 (easy alt-#)
 
 
 bindkey "^Q" clear-screen
-bindkey -s '^W' 'ls -lh^M'
+# bindkey -s '^W' 'ls -lh^M'
+bindkey -s '^W' 'exa -l^M'
 bindkey -s '^[^W' 'ls -lah^M'
+bindkey -s '^[^W' 'exa -la^M'
 bindkey -s '^[^S' 'sudo su -^M'
 bindkey -s '^[^I' 'sudo apt install '
 bindkey -s '^[t' 'tmux new-session -A -s default^M'
@@ -50,3 +52,4 @@ stty -ixon
 
 #PROMPT=${PROMPT/\%c/\%~}
 #RPROMPT="%S%F{blue}%T%f%s"
+#RPROMPT="%(?:%{%}%1{➜%} :%{%}%1{➜%} ) %{%}%c%{%} $(git_prompt_info)"

@@ -7,6 +7,7 @@ alias ....='cd ../../.. && pwd'
 alias cd..='cd .. && pwd'
 
 alias ll='ls -alF'
+alias lll='exa --long --tree --level=2'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -29,15 +30,32 @@ alias mv='mv -iv'
 
 # ----------------------------------------------------------------------
 
+# docker
+alias up='docker compose up -d'
+alias u='alias up;up'
+alias down='docker compose down'
+alias d='alias down;down'
+alias logs='docker logs -f'
+alias l='alias logs;logs'
+
+# ----------------------------------------------------------------------
+
+alias fd='/usr/bin/fdfind'
+
 alias n='nautilus .'
 alias d='dolphin .'
+
 alias ip='hostname -I'
+
 alias path='printf "%b\n" "${PATH//:/\\n}"'
+
 alias jpp='pidof java | sudo xargs pwdx'       # java process's path, jps++
-alias tls='tmux ls'
+
 # my default workspace
-#alias tt='tmux new-session -A -s default'     # sounds not stable
+#alias tt='tmux new-session -A -s default'
 alias tt='tmux ls 2> /dev/null | grep default > /dev/null 2>&1; [[ $? == 0 ]] && tmux attach -t default || tmux new -s default'
+alias tls='tmux ls'
+
 # integrated and fast service status
 alias ss='sudo systemctl --full --type=service --all | grep -i \
 "kafka\
@@ -49,6 +67,10 @@ alias ss='sudo systemctl --full --type=service --all | grep -i \
 \|kibana\
 \|prometheus\
 \|fluent-bit"'
+
+alias bat='batcat'
+alias cat='bat --paging=never'
+alias catt='/bin/cat'
 
 # ----------------------------------------------------------------------
 
