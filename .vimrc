@@ -14,6 +14,10 @@ filetype indent on
 
 " Turn syntax highlighting on
 syntax on
+filetype plugin on
+
+" Refresh the content on the screen without closing and re-opening the file or :e/:edit
+"set autoread
 
 " Enable Mouse
 set mouse=a
@@ -23,7 +27,7 @@ set number
 :highlight LineNr ctermfg=green term=bold cterm=NONE
 
 " Highlight cursor line underneath the cursor horizontally
-set cursorline
+"set cursorline
 
 ":highlight CursorLine ctermfg=Black ctermbg=LightGray cterm=bold guifg=white guibg=yellow gui=bold
 ":highlight Cursor ctermfg=Black ctermbg=Cyan cterm=bold guifg=white guibg=yellow gui=bold
@@ -112,6 +116,12 @@ nnoremap <C-q> :qa!<cr>
 inoremap <C-x> <esc>:wq!<cr>    " save and exit
 nnoremap <C-x> :wq!<cr>
 
+" Force save
+inoremap <C-S-s> <esc>:w !sudo tee %<cr>
+nnoremap <C-S-s> :w !sudo tee %<cr>
+"inoremap <C-S-s> <esc>:w !sudo tee %<cr>L<cr>
+"nnoremap <C-S-s> :w !sudo tee %<cr>L<cr>
+
 " Comment current line
 inoremap <C-c> <esc>0i#<space>
 nnoremap <C-c> 0i#<space><esc>
@@ -125,8 +135,8 @@ inoremap <C-S-d> <esc>yyp
 nnoremap <C-S-d> yyp
 
 " Efficient and fast search in help to find default key bindings
-inoremap <F2> <esc>:help index<cr>:w ! nl -w4 \| fzf-tmux -p --height 40\% --layout reverse --info inline --border --preview 'echo {}' --preview-window down,3,wrap --min-height 15 "$@"<CR>:q<CR><CR>i
-nnoremap <F2> :help index<cr>:w ! nl -w4 \| fzf-tmux -p --height 40\% --layout reverse --info inline --border --preview 'echo {}' --preview-window down,3,wrap --min-height 15 "$@"<CR>:q<CR><CR>
+inoremap <F12> <esc>:help index<cr>:w ! nl -w4 \| fzf-tmux -p --height 40\% --layout reverse --info inline --border --preview 'echo {}' --preview-window down,3,wrap --min-height 15 "$@"<CR>:q<CR><CR>i
+nnoremap <F12> :help index<cr>:w ! nl -w4 \| fzf-tmux -p --height 40\% --layout reverse --info inline --border --preview 'echo {}' --preview-window down,3,wrap --min-height 15 "$@"<CR>:q<CR><CR>
 
 " The escape key is in the far corner of the keyboard but the letter 'j' is in the middle
 inoremap jj <esc>

@@ -38,8 +38,10 @@ bindkey "^[3" comment-it  # alt-3 (easy alt-#)
 
 
 bindkey "^Q" clear-screen
-bindkey -s '^W' 'ls -lh^M'
+# bindkey -s '^W' 'ls -lh^M'
+bindkey -s '^W' 'exa -l^M'
 bindkey -s '^[^W' 'ls -lah^M'
+bindkey -s '^[^W' 'exa -la^M'
 bindkey -s '^[^S' 'sudo su -^M'
 bindkey -s '^[^I' 'sudo apt install '
 bindkey -s '^[t' 'tmux new-session -A -s default^M'
