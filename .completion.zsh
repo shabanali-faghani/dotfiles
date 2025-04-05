@@ -26,7 +26,8 @@ zstyle ':completion:*:descriptions' format '[%d]' # for using '$group'
 # My default settings
 
 # default preview settings
-zstyle ':fzf-tab:*' fzf-flags --preview-window=right:60:wrap  --bind "page-down:preview-page-down,page-up:preview-page-up,q:abort" # preview-up/down works by default with ctrl-up/down
+#zstyle ':fzf-tab:*' fzf-flags --preview-window=right:60:wrap  --bind "page-down:preview-page-down,page-up:preview-page-up,q:abort" # preview-up/down works by default with ctrl-up/down
+zstyle ':fzf-tab:*' fzf-flags --preview-window=right:60  --bind "page-down:preview-page-down,page-up:preview-page-up,q:abort" # preview-up/down works by default with ctrl-up/down
 
 # default right and bottom padding of the tmux popup window
 zstyle ':fzf-tab:*' popup-pad 60 0
@@ -37,9 +38,12 @@ zstyle ':fzf-tab:*' popup-min-size 100 8
 # -------------------------------------------------------------------------
 
 # cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'sudo exa -1 --color=always $realpath'
+#zstyle ':fzf-tab:complete:cd:*' fzf-preview 'sudo exa -1 --color=always $realpath'
 #zstyle ':fzf-tab:complete:cd:*' fzf-preview 'sudo ls -1 --color=always $realpath'
-#zstyle ':fzf-tab:complete:cd:*' fzf-flags --preview-window=right:60:wrap  --bind "j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,q:abort"
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'sudo exa --color=always --tree --level=1 $realpath'
+#zstyle ':fzf-tab:complete:cd:*' fzf-preview 'sudo exa --color=always --tree --level=2 $realpath'
+#zstyle ':fzf-tab:complete:cd:*' fzf-preview 'sudo exa --long --color=always --tree --level=2 $realpath'
+#zstyle ':fzf-tab:complete:cd:*' fzf-flags --preview-window=right:70:wrap  --bind "j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,q:abort"
 
 # systemctl
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
